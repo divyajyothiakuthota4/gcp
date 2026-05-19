@@ -1,3 +1,2 @@
 new commit added 
-other commit
-commit1
+commit

@@ -3,12 +3,12 @@
 steps:
 # Take me a cloud builder image with docker installled
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1', 'build-run/.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/divs-nonprod/docker-repo/build-app:v1', 'build-run/.']
 # Push the image to artifact registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1']
+  args: ['push', 'us-central1-docker.pkg.dev/divs-nonprod/docker-repo/build-app:v1']
 # Deploy image to cloud run 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'my-app', '--image', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1', '--region', 'us-central1', '--allow-unauthenticated']
+  args: ['run', 'deploy', 'build-app', '--image', 'us-central1-docker.pkg.dev/divs-nonprod/docker-repo/build-app:v1', '--region', 'us-central1', '--allow-unauthenticated']
 options:
-  logging: CLOUD_LOGGING_ONLY
+   logging: CLOUD_LOGGING_ONLY
